@@ -4,6 +4,7 @@ mkdir -p work
 cd work
 
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install/lib
+exit_code=$?
 cmake --build . --config Release --target install
 
 unameOut="$(uname -s)"
@@ -19,3 +20,5 @@ echo ${machine}
 if [ "${machine}" = "linux" ]; then
   strip install/lib/*
 fi
+
+exit $exit_code
