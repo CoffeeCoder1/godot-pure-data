@@ -40,11 +40,16 @@ jobs:
       - name: build
         run: sh ci/package.bash work/artifacts
         shell: bash
-      - name: upload-artifacts
+      - name: upload addon artifact
         uses: actions/upload-artifact@v4.3.6
         with:
           name: project
           path: addons
+      - name: upload release artifact
+        uses: actions/upload-artifact@v4.3.6
+        with:
+          name: release
+          path: work/dist
 
   publish:
     needs: [package]
